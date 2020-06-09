@@ -23,7 +23,7 @@
 		android:paddingLeft="30px"
 		android:id="@+id/textView2"
 		android:typeface="normal"
-		android:textSize="22"/>
+		/>
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -34,7 +34,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:paddingLeft="30px"
-		android:textSize="22"
 		android:id="@+id/textView3" />
 	<EditText
 		android:inputType="textPassword"
@@ -51,8 +50,8 @@
 		android:layout_height="wrap_content"
 		android:id="@+id/addedText" />
 	<Button
-		android:text="Button"
+		android:text="Load Usernames"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/button1" />
+		android:id="@+id/LoadAll" />
 </LinearLayout>
