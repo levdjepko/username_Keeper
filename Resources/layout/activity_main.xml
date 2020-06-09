@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+	<TextView
+		android:text="Username Keeper app"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:padding="10px"
+		android:textAlignment="center"
+		android:id="@+id/textView1" />
+	<TextView
+		android:text="Username"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="30px"
+		android:id="@+id/textView2"
+		android:typeface="normal"
+		android:textSize="22"/>
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/nameText" />
+	<TextView
+		android:text="Password"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="30px"
+		android:textSize="22"
+		android:id="@+id/textView3" />
+	<EditText
+		android:inputType="textPassword"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/passwordText" />
+	<Button
+		android:text="Add username"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/AddButton" />
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/addedText" />
+	<Button
+		android:text="Button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/button1" />
+</LinearLayout>
