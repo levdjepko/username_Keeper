@@ -65,18 +65,65 @@ namespace Core
                     return false;
             }
 
-            //check if there's any sequence of characters that is repeated in the password
-            //TODO not done yet...
-            /*
-            List<string> allCombinations = new List<string>();
-            for (int i = 0; i < pass.Length / 2; i++)
+            //check if there's any sequence of characters that is repeated in the password                       
+            static void computeLPSArray(String str, int M, int[] lps)
             {
-                for (int j = 1; j < pass.Length; j++)
-                {
-                    allCombinations.Add(pass.Substring(i, j - i));
-                }
-            }*/
+                // lenght of the previous  
+                // longest prefix suffix 
+                int len = 0;
 
+                int i = 1;
+
+                lps[0] = 0; 
+                
+                // the loop calculates lps[i]  
+                // for i = 1 to M-1 
+                while (i < M)
+                {
+                    if (str[i] == str[len])
+                    {
+                        len++;
+                        lps[i] = len;
+                        i++;
+                    }
+                    else // (pat[i] != pat[len]) 
+                    {
+                        if (len != 0)
+                        {
+                            len = lps[len - 1];
+                        }
+                        else // if (len == 0) 
+                        {
+                            lps[i] = 0;
+                            i++;
+                        }
+                    }
+                }
+            }
+
+            // Returns true if str is repetition of  
+            // one of its substrings else return false. 
+            static bool isRepeat(String str)
+            {
+
+                int n = str.Length;
+                int[] lps = new int[n];
+
+                computeLPSArray(str, n, lps);
+
+                // Find length of longest suffix  
+                // which is also prefix of str. 
+                int len = lps[n - 1];
+
+                return (len > 0 && n % (n - len) == 0)
+                                       ? true : false;
+            }
+            
+                if (isRepeat(pass) == true)
+                {
+                    return false;
+                }
+         
             return true;
         }
     }

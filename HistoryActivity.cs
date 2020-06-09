@@ -20,8 +20,15 @@ namespace username_Keeper
             base.OnCreate(savedInstanceState);
 
             var userNameList = Intent.Extras.GetStringArrayList("user_names") ?? new string[0];
+            var passwordList = (Intent.Extras.GetStringArrayList("pass_words") ?? new string[0]);
             this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, userNameList);
 
+        }
+
+        protected override void OnListItemClick(ListView l, View v, int position, long id)
+        {
+            
+            //Android.Widget.Toast.MakeText(this, passwordList[position], Android.Widget.ToastLength.Short).Show();
         }
     }
 }

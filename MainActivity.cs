@@ -12,7 +12,7 @@ namespace username_Keeper
     public class MainActivity : Activity
     {
         static readonly List<string> userNames = new List<string>();
-
+        static readonly List<string> allPasswords = new List<string>();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,7 +34,10 @@ namespace username_Keeper
                 {
                     FindViewById<TextView>(Resource.Id.addedText).Text = $"Your username is {username.Text} ," +
                     $" password is {password.Text}";
+
+                    //Two different lists suppose to have the same length and position for the items
                     userNames.Add(username.Text);
+                    allPasswords.Add(password.Text);
                     loadAllButton.Enabled = true;
                 }
                 else
@@ -56,6 +59,7 @@ namespace username_Keeper
             {
                 var intent = new Intent(this, typeof(HistoryActivity));
                 intent.PutStringArrayListExtra("user_names", userNames);
+                intent.PutStringArrayListExtra("pass_words", allPasswords);
                 StartActivity(intent);
             };
         }
