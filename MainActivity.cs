@@ -3,12 +3,16 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
+using System.Collections.Generic;
+using Android.Content;
 
 namespace username_Keeper
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : Activity
     {
+        static readonly List<string> userNames = new List<string>();
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -22,7 +26,7 @@ namespace username_Keeper
             Button      addButton = FindViewById<Button>(Resource.Id.AddButton);
             Button      loadAllButton = FindViewById<Button>(Resource.Id.LoadAll);
 
-
+            
             addButton.Click += (sender, e) =>
             {
                 // Check if the password is correct and username is not empty
@@ -30,6 +34,8 @@ namespace username_Keeper
                 {
                     FindViewById<TextView>(Resource.Id.addedText).Text = $"Your username is {username.Text} ," +
                     $" password is {password.Text}";
+                    userNames.Add(username.Text);
+                    loadAllButton.Enabled = true;
                 }
                 else
                 {
@@ -44,6 +50,13 @@ namespace username_Keeper
                     });
                     alert.Show();
                 }
+            };
+
+            loadAllButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(HistoryActivity));
+                intent.PutStringArrayListExtra("user_names", userNames);
+                StartActivity(intent);
             };
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
