@@ -1,58 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-	<TextView
-		android:text="Username Keeper app"
-		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:minWidth="25px"
-		android:minHeight="25px"
-		android:padding="10px"
-		android:textAlignment="center"
-		android:id="@+id/textView1" />
-	<TextView
-		android:text="Username"
-		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:paddingLeft="30px"
-		android:id="@+id/textView2"
-		android:typeface="normal"
+    android:padding="25px"
+    android:orientation="vertical"
+    android:background="#ffebeef7">
+    <TextView
+        android:text="Username Keeper app"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:padding="10px"
+        android:textAlignment="center"
+        android:id="@+id/textView1" />
+    <TextView
+        android:text="Username"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30px"
+        android:id="@+id/textView2"
+        android:typeface="normal"
+        android:textColor="#ff000000" 
 		/>
-	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/nameText" />
-	<TextView
-		android:text="Password"
-		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:paddingLeft="30px"
-		android:id="@+id/textView3" />
-	<EditText
-		android:inputType="textPassword"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/passwordText" />
-	<Button
-		android:text="Add username"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/AddButton" />
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/addedText" />
-	<Button
-		android:text="Load Usernames"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/LoadAll"
-		android:enabled="false" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameText" />
+    <TextView
+        android:text="Password"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30px"
+        android:id="@+id/textView3"
+        android:textColor="#ff000000" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordText" />
+    <Button
+        android:text="Add username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddButton" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addedText" />
+    <Button
+        android:text="Load Usernames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LoadAll"
+        android:enabled="false" />
 </LinearLayout>

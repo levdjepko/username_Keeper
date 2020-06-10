@@ -36,8 +36,7 @@ namespace username_Keeper
                     $" password is {password.Text}";
 
                     //Two different lists suppose to have the same length and position for the items
-                    userNames.Add(username.Text);
-                    allPasswords.Add(password.Text);
+                    userNames.Add($"Username: {username.Text} ,\t Password: {password.Text}");
                     loadAllButton.Enabled = true;
                 }
                 else
@@ -59,7 +58,6 @@ namespace username_Keeper
             {
                 var intent = new Intent(this, typeof(HistoryActivity));
                 intent.PutStringArrayListExtra("user_names", userNames);
-                intent.PutStringArrayListExtra("pass_words", allPasswords);
                 StartActivity(intent);
             };
         }
