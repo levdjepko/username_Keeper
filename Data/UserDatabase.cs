@@ -40,22 +40,13 @@ namespace username_Keeper.Data
                 }
             }
         }
-
+        //LOAD ALL
         public Task<List<Item>> GetItemsAsync()
         {
             return Database.Table<Item>().ToListAsync();
         }
 
-        /*public Task<List<Item>> GetItemsNotDoneAsync()
-        {
-            return Database.QueryAsync<Item>("SELECT * FROM [Item]");
-        }*/
-
-       /* public Task<Item> GetItemAsync(int id)
-        {
-            return Database.Table<Item>().Where(i => i.ID == id).FirstOrDefaultAsync();
-        }*/
-
+        //INSERT
         public Task<int> SaveItemAsync(Item item)
         {
             if (item.ID != 0)
@@ -68,9 +59,5 @@ namespace username_Keeper.Data
             }
         }
 
-       /* public Task<int> DeleteItemAsync(Item item)
-        {
-            return Database.DeleteAsync(item);
-        }*/
     }
 }

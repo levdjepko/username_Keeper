@@ -14,8 +14,6 @@ namespace username_Keeper
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        static readonly List<string> userNames = new List<string>();
-        static readonly List<string> allPasswords = new List<string>();
 
         static UserDatabase database;
         public static UserDatabase Database
@@ -33,8 +31,6 @@ namespace username_Keeper
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
             // Get our UI controls from the loaded layout
@@ -52,9 +48,6 @@ namespace username_Keeper
                 {
                     FindViewById<TextView>(Resource.Id.addedText).Text = $"Your username is {username.Text} ," +
                     $" password is {password.Text}";
-
-                    
-                    userNames.Add($"Username: {username.Text} ,\t Password: {password.Text}");
                     
 
                     Item newItem = new Item();
@@ -81,13 +74,9 @@ namespace username_Keeper
                 }
             };
 
-            loadAllButton.Click += async (sender, e) =>
+            loadAllButton.Click += (sender, e) =>
             {
-                /*var intent = new Intent(this, typeof(HistoryActivity));
-                intent.PutStringArrayListExtra("user_names", userNames);
-                StartActivity(intent);*/
-
-                StartActivity(typeof(List_View));
+                StartActivity(typeof(list_View));
             };
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
