@@ -5,6 +5,9 @@ using Android.Runtime;
 using Android.Widget;
 using System.Collections.Generic;
 using Android.Content;
+using username_Keeper.Models;
+using SQLite;
+using username_Keeper.Data;
 
 namespace username_Keeper
 {
@@ -13,6 +16,20 @@ namespace username_Keeper
     {
         static readonly List<string> userNames = new List<string>();
         static readonly List<string> allPasswords = new List<string>();
+
+        static UserDatabase database;
+        public static UserDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new UserDatabase();
+                }
+                return database;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,8 +43,9 @@ namespace username_Keeper
             Button      addButton = FindViewById<Button>(Resource.Id.AddButton);
             Button      loadAllButton = FindViewById<Button>(Resource.Id.LoadAll);
 
-            
-            addButton.Click += (sender, e) =>
+            loadAllButton.Enabled = true;
+
+            addButton.Click += async (sender, e) =>
             {
                 // Check if the password is correct and username is not empty
                 if (Core.EntryValidator.CheckPassword(password.Text) && username.Text.Length > 0)
@@ -35,9 +53,18 @@ namespace username_Keeper
                     FindViewById<TextView>(Resource.Id.addedText).Text = $"Your username is {username.Text} ," +
                     $" password is {password.Text}";
 
-                    //Two different lists suppose to have the same length and position for the items
+                    
                     userNames.Add($"Username: {username.Text} ,\t Password: {password.Text}");
-                    loadAllButton.Enabled = true;
+                    
+
+                    Item newItem = new Item();
+                    newItem.Name = username.Text;
+                    newItem.Pass = password.Text;
+                    
+                    await Database.SaveItemAsync(newItem);
+
+                    FindViewById<TextView>(Resource.Id.addedText).Text = $"ADDED TO DB:user: {username.Text} ," +
+                    $" password: {password.Text}";
                 }
                 else
                 {
@@ -45,20 +72,22 @@ namespace username_Keeper
                     Android.App.AlertDialog alert = dialog.Create();
                     alert.SetTitle("Password not complaint");
                     alert.SetMessage("Your username should be not empty. \n Password must only contain letters and digits, be between 5 and 12 letters long, have at least" +
-                        " 1 letter and 1 number, and not have recurring substrings (like abcabc");
+                        " 1 letter and 1 number, and not have recurring substrings (like abcabc), even characters.");
                     alert.SetButton("OK", (c, ev) =>
                     {
-                        // no action required
+                        
                     });
                     alert.Show();
                 }
             };
 
-            loadAllButton.Click += (sender, e) =>
+            loadAllButton.Click += async (sender, e) =>
             {
-                var intent = new Intent(this, typeof(HistoryActivity));
+                /*var intent = new Intent(this, typeof(HistoryActivity));
                 intent.PutStringArrayListExtra("user_names", userNames);
-                StartActivity(intent);
+                StartActivity(intent);*/
+
+                StartActivity(typeof(List_View));
             };
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
